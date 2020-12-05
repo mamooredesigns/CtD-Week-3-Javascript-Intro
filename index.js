@@ -6,11 +6,29 @@
  //@param {number} number1
  //@param {number} number2
  //@return {number} product
-const multiplication = () => {
-  return
+
+ let number1 = parseInt(prompt("Please enter a positive, whole number:"))
+ let number2 = parseInt(prompt("Please enter another positive, whole number:"))
+ 
+//  let num1 = parseInt(number1)
+
+ const multiplication = (num1, num2) => {
+  console.log(typeof num1)
+  console.log(typeof num2)
+  let total = 0;
+
+  for (i = 0; i < num2 ; i++) {
+    console.log("iteration counter: ", i)
+    console.log("total before calculation:", total)
+    //console.log(typeof total)
+    total += num1
+    console.log("total is:", total)
+  }
+
+  return total
 }
 
-const answer1 = multiplication()
+const answer1 = multiplication(number1, number2)
 console.log('answer1', answer1)
 
 const htmlTarget = document.getElementById('a-1')
@@ -25,8 +43,54 @@ htmlTarget.innerHTML = answer1
 
 //@param {string}
 //@return {character} => array of characters
+
 vowelOrConsonant = () => {
-  return
+  //Get a string from user
+  let userInput = prompt("Please enter a string:");
+  let array = [];
+  
+  //split the string into individual characters
+  for (i =0; i < userInput.length; i++) {
+    console.log("userinput is:", userInput)
+    let character = userInput.charAt(i);
+    console.log("character is: ", character)
+    array.push(character);
+    console.log("array is:", array)
+  }
+    //assess each character to determine v/c; split string into one of two arrays, either vowels or consonants
+  let vowels = [];
+  let consonants =[];
+
+  for (i=0; i < userInput.length ;i++) {
+    console.log("arrays at start: ", vowels, consonants)
+    console.log("array length", array.length)
+    let characterToAssess = array[i];
+    console.log("character working with:", characterToAssess)  
+    //add character to apropriate array
+    if (characterToAssess == "a" || characterToAssess == "e" || characterToAssess == "i" || characterToAssess == "o" || characterToAssess == "u") {
+      vowels.push(characterToAssess);
+      console.log("vowel array:", vowels)
+    } else {
+      consonants.push(characterToAssess)
+      console.log("consonant array:", consonants)
+    }
+    console.log("Our final vowel array is:", vowels)
+    console.log("Our final consonant array is:", consonants)
+  }
+    
+  //Ask user if wanting vowel/consonant
+  let userRequest = prompt("Do you want your vowels or consonants first? Type 'vowels' for vowels first, or 'consonants' for consonants first.")
+  //return appropriate array based on user answer
+  let reply;
+
+  if (userRequest == "vowels") {
+    reply = vowels.concat(consonants);
+  } else {
+    reply = consonants.concat(vowels);
+  }
+
+  return reply
+
 }
 
 const answer2 = vowelOrConsonant()
